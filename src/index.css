@@ -5,7 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --border: 1px solid var(--color_border);
 }
+
+:root {
+  /* Default theme colors */
+  --color_primary: #0176c6;
+  --color_primary_text: #fff;
+  --color_background: #f7f7f7;
+  --color_shade_background: #f2f2f2;
+  --color_border: #C2C4C6;
+  --color_text: #242427;
+  --color_placeholder: #8c8c91;
+  --color_danger: #ff4d4f;
+  --color_link: #1890ff;
+  --color_confirmation: #63ac5b;
+
+
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
