@@ -6,7 +6,11 @@ type PropsType = {
 };
 
 const Layout = ({ children }: PropsType) => {
-  return <div className={styles.layout}>{children}</div>;
+  return (
+    <div className={styles.layout}>
+      <div className={styles.container__content}>{children}</div>
+    </div>
+  );
 };
 
 export default Layout;

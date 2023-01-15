@@ -1,7 +1,15 @@
 .layout{
   width: 100%;
   height: 100%;
-  max-width: 1240px;
 
-  margin: 64px;
+  display: flex;
+  justify-content: center;
+
+  padding:  calc(var(--big_padding) * 2);
+}
+
+.container__content{
+  width: 100%;
+  height: 100%;
+  max-width: 1240px;
 }

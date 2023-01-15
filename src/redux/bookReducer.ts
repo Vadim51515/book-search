@@ -1,7 +1,18 @@
-import { getBooks as getBooksApi } from "api";
+import { getBook as getBookApi, getBooks as getBooksApi } from "api";
 import { BaseThunkType, InferActionsTypes } from "./store";
+import store from "redux/store";
 let initialState = {
   books: [] as Array<BookType>,
+  book: undefined as BookType | undefined,
+  categoryOption: {
+    value: "all",
+    label: "Все",
+  } as SelectOptionType,
+  sortByOption: {
+    value: "relevance",
+    label: "Актуальное",
+  } as SelectOptionType,
+  titleBook: "12" as string,
 };
 
 const bookReducer = (
@@ -10,11 +21,34 @@ const bookReducer = (
 ): InitialStateType => {
   switch (action.type) {
     case "App-reducer/SET_BOOKS": {
-      console.log("123");
-
       return {
         ...state,
         books: action.books,
+      };
+    }
+    case "App-reducer/SET_CATEGORY_OPTION": {
+      return {
+        ...state,
+        categoryOption: action.categoryOption,
+      };
+    }
+    case "App-reducer/SET_SORT_BY_OPTION": {
+      return {
+        ...state,
+        sortByOption: action.sortByOption,
+      };
+    }
+    case "App-reducer/SET_TITLE_BOOK": {
+      return {
+        ...state,
+        titleBook: action.titleBook,
+      };
+    }
+
+    case "App-reducer/SET_BOOK": {
+      return {
+        ...state,
+        book: action.book,
       };
     }
     default:
@@ -25,10 +59,39 @@ const bookReducer = (
 export const actions = {
   setBooks: (books: Array<BookType>) =>
     ({ type: "App-reducer/SET_BOOKS", books: books } as const),
+  setCategoryOption: (categoryOption: SelectOptionType) =>
+    ({
+      type: "App-reducer/SET_CATEGORY_OPTION",
+      categoryOption: categoryOption,
+    } as const),
+  setSortByOption: (sortByOption: SelectOptionType) =>
+    ({
+      type: "App-reducer/SET_SORT_BY_OPTION",
+      sortByOption: sortByOption,
+    } as const),
+  setTitleBook: (titleBook: string) =>
+    ({
+      type: "App-reducer/SET_TITLE_BOOK",
+      titleBook: titleBook,
+    } as const),
+
+  setBook: (book: BookType) =>
+    ({
+      type: "App-reducer/SET_BOOK",
+      book: book,
+    } as const),
 };
 
+// For home page
 export const getBooks = (): ThunkType => async (dispatch) => {
-  const response = await getBooksApi().then((res) => {
+  const state = store.getState().bookReducer;
+
+  const response = await getBooksApi({
+    orderBy: state.sortByOption.value,
+    startIndex: "0",
+    subject: state.categoryOption.value,
+    titleBook: state.titleBook,
+  }).then((res) => {
     return res;
   });
   if (response && "data" in response) {
@@ -36,13 +99,35 @@ export const getBooks = (): ThunkType => async (dispatch) => {
   }
 };
 
-//////////////////////////////////////// Dispatch<ActionTypes>
-// export const initialize = () => (dispatch:any) => {
-//     const promize = dispatch(getUserData())
-//    Promise.all([promize]).then(() => {
-//         dispatch(actions.initializedSuccess())
-//     })
-// }
+export const changeCategoryOption =
+  (categoryOption: SelectOptionType): ThunkType =>
+  async (dispatch) => {
+    dispatch(actions.setCategoryOption(categoryOption));
+  };
+
+export const changeSortByOption =
+  (sortByOption: SelectOptionType): ThunkType =>
+  async (dispatch) => {
+    dispatch(actions.setSortByOption(sortByOption));
+  };
+
+export const changeTitleBook =
+  (titleBook: string): ThunkType =>
+  async (dispatch) => {
+    dispatch(actions.setTitleBook(titleBook));
+  };
+
+//For book page
+export const getBook = (id: string): ThunkType => async (dispatch) => {
+    const response = await getBookApi({
+      id: id,
+    }).then((res) => {
+      return res;
+    });
+    if (response && "data" in response) {
+      dispatch(actions.setBook(response.data));
+    }
+  };
 
 export default bookReducer;
 

@@ -1,4 +1,4 @@
-import { TypedUseSelectorHook, useSelector as useReduxSelector } from 'react-redux';
+import { TypedUseSelectorHook, useDispatch as useReduxDispatch, useSelector as useReduxSelector } from 'react-redux';
 import { applyMiddleware, combineReducers, createStore, compose, Action } from 'redux';
 import  thunkMiddleWare, { ThunkAction } from 'redux-thunk'
 import bookReducer from './bookReducer';
@@ -23,6 +23,10 @@ export type BaseThunkType<A extends Action, R = Promise<void>> = ThunkAction<R, 
 // const store = createStore(rootReducer, undefined, composedEnhancers)
 
 export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector
+
+export type AppDispatch = typeof store.dispatch
+export const useDispatch = () => useReduxDispatch<AppDispatch>()
+
 
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

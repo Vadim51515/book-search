@@ -1,13 +1,14 @@
-import Home from "Pages/Home/Home"
-import { Route, Routes } from "react-router-dom"
+import BookPage from "pages/BookPage/BookPage";
+import Home from "pages/Home/Home";
+import { Route, Routes } from "react-router-dom";
 
 const Router = () => {
-  return(
-<Routes>
-<Route path={'/'} element={<Home />} />
-<Route path={'/123'} element={<Home />} />
-  qwe
-</Routes>)
-}
+  return (
+    <Routes>
+      <Route path={"/"} element={<Home />} />
+      <Route path="/book/:id" element={<BookPage />} />
+    </Routes>
+  );
+};
 
-export default Router
+export default Router;
