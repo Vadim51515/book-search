@@ -1,42 +1,82 @@
+@font-face {
+  font-family: "Roboto-Regular";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/font/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto-Bold";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/font/Roboto-Bold.ttf") format("truetype");
+}
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --border: 1px solid var(--color_border);
+  font-family: "Roboto-Regular", serif !important;
 }
 
 :root {
-  /* Default theme colors */
-  --color_primary: #0176c6;
-  --color_primary_text: #fff;
-  --color_background: #f7f7f7;
-  --color_shade_background: #f2f2f2;
-  --color_border: #C2C4C6;
-  --color_text: #242427;
-  --color_placeholder: #8c8c91;
-  --color_danger: #ff4d4f;
-  --color_link: #1890ff;
-  --color_confirmation: #63ac5b;
+  /* Colors */
+  --primary_color: #0277bd;
+  --border_color: #c2c4c6;
+  --background_card_color: #f7f7f7;
+  --shade_text_color: #69737b;
+  --color_for_primary_background: #f8f9f9;
 
+  --border: 1px solid var(--border_color);
 
+  --little_padding: 8px;
+  --padding: 16px;
+  --big_padding: 32px;
+
+  --little_margin: 8px;
+  --margin: 16px;
+  --big_margin: 32px;
 }
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 h1,
 h2,
-h3,
+h3 {
+  margin: 0;
+  font-family: "Roboto-Bold", serif !important;
+}
 h4,
 h5,
-h6{
+h6,
+p,
+button {
+  font-family: "Roboto-Regular", serif !important;
+  font-weight: normal;
   margin: 0;
 }
 
+p {
+  font-size: 12px;
+}
+
+button {
+  border: none;
+  background: none;
+}
