@@ -3,10 +3,6 @@
 }
 
 .contentContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  gap: var(--big_padding);
 }
 
 .imgContainer {
@@ -19,7 +15,7 @@
 
   > img {
     width: 100%;
-    max-height: 700px;
+    max-height: 350px;
     object-fit: contain;
   }
 }
@@ -29,7 +25,7 @@
 }
 
 .titleBook {
-  margin-bottom:var(--little_margin);
+  margin-bottom: var(--little_margin);
 }
 
 .hr {
@@ -42,4 +38,30 @@
 
 .descriptionText {
   font-size: 14px;
+}
+
+@media (min-width: 900px) {
+  .contentContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--big_padding);
+  }
+
+  .imgContainer{
+    > img {
+        max-height: 700px;
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .imgContainer{
+    > img {
+        max-height: 500px;
+    }
+  }
+}
+
+@media (min-width: 425px) {
+
 }
