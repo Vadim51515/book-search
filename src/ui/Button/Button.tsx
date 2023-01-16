@@ -3,7 +3,7 @@ import classNames from "classnames";
 type PropsType = {
   children: string;
   type?: "primary" | "default";
-  onClick: () => {};
+  onClick: () => void;
 };
 const Button = ({ children, type = "default", onClick }: PropsType) => {
   return (
