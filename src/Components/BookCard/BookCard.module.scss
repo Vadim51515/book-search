@@ -5,7 +5,7 @@
   padding: var(--padding);
 
   background-color: var(--background_card_color);
-  border-radius: 6px;
+  border-radius: var( --border_radius);
 
   cursor: pointer;
 }

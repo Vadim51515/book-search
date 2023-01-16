@@ -50,6 +50,8 @@ body {
   --little_margin: 8px;
   --margin: 16px;
   --big_margin: 32px;
+
+  --border_radius:6px;
 }
 
 code {

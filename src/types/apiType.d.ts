@@ -8,11 +8,16 @@ type BookType = {
   volumeInfo: {
     title: string;
     imageLinks: {
-      smallThumbnail: string;
-      thumbnail: string;
+      extraLarge?: string;
+      large?: string;
+      medium?: string;
+      small?: string;
+      smallThumbnail?: string;
+      thumbnail?: string;
     };
     categories?: Array<string>;
     authors?: Array<string>;
+    description?: string;
   };
 };
 

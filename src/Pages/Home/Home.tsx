@@ -12,7 +12,7 @@ const Home = () => {
       <Layout>
         <h1 className={styles.title}>Быстрый поиск книг</h1>
         <BookFilter />
-        <Hr />
+        <Hr propsClassName={styles.hr}/>
         <BookCardsLayout />
       </Layout>
     </>

@@ -2,6 +2,8 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://www.googleapis.com/books/v1/volumes";
 
+const API_KEY = 'AIzaSyDUWwCLn1Coklf-H3ZThOtrudkKdvnArVA'
+
 export const getBooks = ({
   titleBook,
   orderBy,
@@ -10,7 +12,7 @@ export const getBooks = ({
 }: GetBooksParams) => {
   return axios
     .get(
-      `?q=${titleBook}&subject=${subject}&maxResults=${30}&startIndex=${startIndex}&orderBy=${orderBy}`
+      `?q=${titleBook}&subject=${subject}&maxResults=${30}&startIndex=${startIndex}&orderBy=${orderBy}&key=${API_KEY}`
     )
     .then(function (response: { data: BooksType }) {
       return response;
