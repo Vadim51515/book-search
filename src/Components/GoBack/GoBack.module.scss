@@ -1,0 +1,15 @@
+
+.container {
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.goBackArrow{
+  margin-right: var(--little_margin);
+}
+
+.text{
+  color: var(--primary_color);
+}
