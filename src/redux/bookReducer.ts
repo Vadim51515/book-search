@@ -12,8 +12,10 @@ let initialState = {
     value: "relevance",
     label: "Актуальное",
   } as SelectOptionType,
-  titleBook: "" as string,
+  titleBook: "js" as string,
   isLoadingHomePage: false as boolean,
+  startIndex: 0 as number,
+  maxResults: 30,
 };
 
 const bookReducer = (
@@ -26,8 +28,17 @@ const bookReducer = (
         ...state,
         books: action.books,
         isLoadingHomePage: false,
+        startIndex: 0,
       };
     }
+    case "App-reducer/MERGE_BOOKS": {
+      return {
+        ...state,
+        books: [...state.books, ...action.books],
+        startIndex: action.startIndex,
+      };
+    }
+
     case "App-reducer/SET_CATEGORY_OPTION": {
       return {
         ...state,
@@ -67,6 +78,12 @@ const bookReducer = (
 export const actions = {
   setBooks: (books: Array<BookType>) =>
     ({ type: "App-reducer/SET_BOOKS", books: books } as const),
+  mergeBooks: (books: Array<BookType>, index: number) =>
+    ({
+      type: "App-reducer/MERGE_BOOKS",
+      books: books,
+      startIndex: index,
+    } as const),
   setCategoryOption: (categoryOption: SelectOptionType) =>
     ({
       type: "App-reducer/SET_CATEGORY_OPTION",
@@ -96,25 +113,45 @@ export const actions = {
 };
 
 // For home page
-export const getBooks = (): ThunkType => async (dispatch) => {
-  dispatch(actions.setIsLoadingHomePage(true));
-  const state = store.getState().bookReducer;
 
+export const requestGetBooks = (startIndex: number) => async () => {
+  const state = store.getState().bookReducer;
   const response = await getBooksApi({
+    maxResults: state.maxResults.toString(),
     orderBy: state.sortByOption.value,
-    startIndex: "0",
+    startIndex: startIndex.toString(),
     subject: state.categoryOption.value,
     titleBook: state.titleBook,
   }).then((res) => {
     return res;
   });
-  console.log("response", response);
+  return response;
+};
 
-  if (response && "data" in response) {
-    dispatch(actions.setBooks(response.data.items));
-  } else {
-    dispatch(actions.setIsLoadingHomePage(false));
-  }
+export const getBooks = (): ThunkType => async (dispatch) => {
+  dispatch(actions.setIsLoadingHomePage(true));
+  const state = store.getState().bookReducer;
+
+  const response = dispatch(requestGetBooks(0));
+  response.then((res) => {
+    if (res && "data" in res) {
+      dispatch(actions.setBooks(res.data.items));
+    } else {
+      dispatch(actions.setIsLoadingHomePage(false));
+    }
+  });
+};
+
+export const showMore = (): ThunkType => async (dispatch) => {
+  const state = store.getState().bookReducer;
+  const index = state.startIndex + state.maxResults;
+  const response = dispatch(requestGetBooks(index));
+  response.then((res) => {
+    if (res && "data" in res) {
+      dispatch(actions.mergeBooks(res.data.items, index));
+    } else {
+    }
+  });
 };
 
 export const changeCategoryOption =

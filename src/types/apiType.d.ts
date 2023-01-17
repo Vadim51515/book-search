@@ -26,6 +26,7 @@ type GetBooksParams = {
   subject: string;
   startIndex: string;
   orderBy: string;
+  maxResults: string;
 };
 
 type SelectOptionType = { value: string; label: string };

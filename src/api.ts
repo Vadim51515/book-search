@@ -9,10 +9,11 @@ export const getBooks = ({
   orderBy,
   startIndex,
   subject,
+  maxResults,
 }: GetBooksParams) => {
   return axios
     .get(
-      `?q=${titleBook}&subject=${subject}&maxResults=${30}&startIndex=${startIndex}&orderBy=${orderBy}&key=${API_KEY}`
+      `?q=${titleBook}&subject=${subject}&maxResults=${maxResults}&startIndex=${startIndex}&orderBy=${orderBy}&key=${API_KEY}`
     )
     .then(function (response: { data: BooksType }) {
       return response;

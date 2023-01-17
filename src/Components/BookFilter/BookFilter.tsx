@@ -20,9 +20,9 @@ const BookFilter = () => {
   const sortByOption = useSelector((store) => store.bookReducer.sortByOption);
   const titleBook = useSelector((store) => store.bookReducer.titleBook);
 
-  useEffect(() => {
-    dispatch(getBooks())
-  },[])
+  // useEffect(() => {
+  //   dispatch(getBooks())
+  // },[])
 
   const changeCategory = (categoryOption: SelectOptionType) => {
     dispatch(changeCategoryOption(categoryOption));
