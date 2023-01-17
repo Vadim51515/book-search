@@ -7,7 +7,7 @@ type BookType = {
   id: string;
   volumeInfo: {
     title: string;
-    imageLinks: {
+    imageLinks?: {
       extraLarge?: string;
       large?: string;
       medium?: string;

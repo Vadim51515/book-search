@@ -31,8 +31,8 @@ const BookPage = () => {
       <div className={styles.contentContainer}>
         <div className={styles.imgContainer}>
           <LazyLoadingImg
-            thumbnail={book?.volumeInfo.imageLinks.thumbnail}
-            smallThumbnail={book?.volumeInfo.imageLinks.smallThumbnail}
+            thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
+            smallThumbnail={book?.volumeInfo?.imageLinks?.smallThumbnail}
           />
         </div>
 
@@ -42,7 +42,7 @@ const BookPage = () => {
           <BookAuthors authors={book?.volumeInfo.authors}/>
           <Hr propsClassName={styles.hr}/>
           <h2 className={styles.descriptionTitle}>Описание</h2>
-          <h4 className={styles.descriptionText}>{book?.volumeInfo.description}</h4>
+          <h4 className={styles.descriptionText}>{book?.volumeInfo.description ?? 'Описание отсутвует :('}</h4>
         </div>
       </div>
     </Layout>
