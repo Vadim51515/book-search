@@ -9,7 +9,7 @@ type PropsType = {
 const BookCard = ({ book }: PropsType) => {
   const navigate = useNavigate();
 
-  console.log("book", book);
+  // console.log("book", book);
 
   return (
     <div
