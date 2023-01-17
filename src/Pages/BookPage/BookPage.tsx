@@ -16,12 +16,10 @@ const BookPage = () => {
   const { id: bookId } = useParams();
 
   const book = useSelector((store) => store.bookReducer.book);
-  // console.log("bookId", bookId);
   useEffect(() => {
     dispatch(getBook(bookId ?? ""));
   }, []);
-  console.log("book", book);
-
+  
   return (
     <Layout>
       <GoBack

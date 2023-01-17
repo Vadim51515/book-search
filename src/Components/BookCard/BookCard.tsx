@@ -9,8 +9,6 @@ type PropsType = {
 const BookCard = ({ book }: PropsType) => {
   const navigate = useNavigate();
 
-  // console.log("book", book);
-
   return (
     <div
       className={styles.container}

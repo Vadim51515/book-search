@@ -114,7 +114,6 @@ export const actions = {
 };
 
 // For home page
-
 export const requestGetBooks = (startIndex: number) => async () => {
   const state = store.getState().bookReducer;
   const response = await getBooksApi({

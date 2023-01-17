@@ -29,11 +29,9 @@ export const getBook = ({ id }: { id: string }) => {
   return axios
     .get(`/${id}`)
     .then(function (response: { data: BookType }) {
-      console.log("response", response);
       return response;
     })
     .catch(function (error) {
-      // handle error
       console.log(error);
     })
     .finally(function () {
