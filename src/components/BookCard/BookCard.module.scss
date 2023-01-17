@@ -5,7 +5,7 @@
   padding: var(--padding);
 
   background-color: var(--background_card_color);
-  border-radius: var( --border_radius);
+  border-radius: var(--border_radius);
 
   cursor: pointer;
 }
@@ -17,4 +17,10 @@
   justify-content: center;
 
   margin-bottom: 16px;
+
+  > img {
+    height: 184px;
+    width: 266px;
+    object-fit: contain;
+  }
 }
