@@ -12,7 +12,8 @@ let initialState = {
     value: "relevance",
     label: "Актуальное",
   } as SelectOptionType,
-  titleBook: "12" as string,
+  titleBook: "" as string,
+  isLoadingHomePage: false as boolean,
 };
 
 const bookReducer = (
@@ -24,6 +25,7 @@ const bookReducer = (
       return {
         ...state,
         books: action.books,
+        isLoadingHomePage: false,
       };
     }
     case "App-reducer/SET_CATEGORY_OPTION": {
@@ -42,6 +44,12 @@ const bookReducer = (
       return {
         ...state,
         titleBook: action.titleBook,
+      };
+    }
+    case "App-reducer/SET_IS_LOADING_HOME_PAGE": {
+      return {
+        ...state,
+        isLoadingHomePage: action.isLoadingHomePage,
       };
     }
 
@@ -74,6 +82,11 @@ export const actions = {
       type: "App-reducer/SET_TITLE_BOOK",
       titleBook: titleBook,
     } as const),
+  setIsLoadingHomePage: (value: boolean) =>
+    ({
+      type: "App-reducer/SET_IS_LOADING_HOME_PAGE",
+      isLoadingHomePage: value,
+    } as const),
 
   setBook: (book: BookType) =>
     ({
@@ -84,6 +97,7 @@ export const actions = {
 
 // For home page
 export const getBooks = (): ThunkType => async (dispatch) => {
+  dispatch(actions.setIsLoadingHomePage(true));
   const state = store.getState().bookReducer;
 
   const response = await getBooksApi({
@@ -94,8 +108,12 @@ export const getBooks = (): ThunkType => async (dispatch) => {
   }).then((res) => {
     return res;
   });
+  console.log("response", response);
+
   if (response && "data" in response) {
     dispatch(actions.setBooks(response.data.items));
+  } else {
+    dispatch(actions.setIsLoadingHomePage(false));
   }
 };
 
@@ -118,7 +136,9 @@ export const changeTitleBook =
   };
 
 //For book page
-export const getBook = (id: string): ThunkType => async (dispatch) => {
+export const getBook =
+  (id: string): ThunkType =>
+  async (dispatch) => {
     const response = await getBookApi({
       id: id,
     }).then((res) => {

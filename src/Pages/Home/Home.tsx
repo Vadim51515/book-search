@@ -13,8 +13,7 @@ const Home = () => {
         <h1 className={styles.title}>Быстрый поиск книг</h1>
         <BookFilter />
         <Hr propsClassName={styles.hr} />
-        <BookCardsLayout propsClassName={styles.bookCardsLayout}/>
-        <Button onClick={() => {}}>Показать ещё </Button>
+        <BookCardsLayout propsClassName={styles.bookCardsLayout}  />
       </Layout>
     </>
   );
