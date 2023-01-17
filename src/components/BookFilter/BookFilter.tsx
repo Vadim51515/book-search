@@ -10,7 +10,7 @@ import {
 import Input from "ui/Input/Input";
 import { useDispatch, useSelector } from "redux/store";
 import Button from "ui/Button/Button";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 const BookFilter = () => {
   const dispatch = useDispatch();
 
@@ -19,10 +19,6 @@ const BookFilter = () => {
   );
   const sortByOption = useSelector((store) => store.bookReducer.sortByOption);
   const titleBook = useSelector((store) => store.bookReducer.titleBook);
-
-  // useEffect(() => {
-  //   dispatch(getBooks())
-  // },[])
 
   const changeCategory = (categoryOption: SelectOptionType) => {
     dispatch(changeCategoryOption(categoryOption));
@@ -35,7 +31,6 @@ const BookFilter = () => {
   const changeTitleBook = (titleBook: string) => {
     dispatch(changeTitleBookRedux(titleBook));
   };
-
 
   return (
     <div className={styles.container}>
