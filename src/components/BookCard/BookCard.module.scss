@@ -1,7 +1,4 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding: var(--padding);
 
   background-color: var(--background_card_color);
@@ -23,4 +20,13 @@
     width: 266px;
     object-fit: contain;
   }
+}
+
+
+.categoriesContainer{
+  margin-bottom: var(--little_margin);
+}
+
+.bookTitle{
+  margin-bottom: var(--little_margin);
 }

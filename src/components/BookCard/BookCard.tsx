@@ -24,8 +24,8 @@ const BookCard = ({ book }: PropsType) => {
         />
       </div>
       <div>
-        <BookCategories isLowerCase categories={book.volumeInfo.categories} />
-        <h4>{book.volumeInfo.title}</h4>
+        <BookCategories propsCategoriesContainer={styles.categoriesContainer} isLowerCase categories={book.volumeInfo.categories} />
+        <h4 className={styles.bookTitle}>{book.volumeInfo.title}</h4>
         <BookAuthors authors={book.volumeInfo.authors} />
       </div>
     </div>

@@ -106,11 +106,12 @@ export const actions = {
       isLoadingHomePage: value,
     } as const),
 
-  setBook: (book: BookType) =>
+  setBook: (book?: BookType) =>
     ({
       type: "App-reducer/SET_BOOK",
       book: book,
     } as const),
+
 };
 
 // For home page
@@ -136,12 +137,10 @@ export const getBooks = (): ThunkType => async (dispatch) => {
     dispatch(actions.setIsLoadingHomePage(true));
     const response = dispatch(requestGetBooks(0));
     response.then((res) => {
-      console.log("res", res);
-
       if (res && "items" in res.data) {
         dispatch(actions.setBooks(res.data.items));
       } else {
-        dispatch(actions.setIsLoadingHomePage(false));
+        dispatch(actions.setBooks([]));
       }
     });
   }
@@ -190,6 +189,10 @@ export const getBook =
       dispatch(actions.setBook(response.data));
     }
   };
+
+export const clearBook = (): ThunkType => async (dispatch) => {
+  dispatch(actions.setBook())
+};
 
 export default bookReducer;
 

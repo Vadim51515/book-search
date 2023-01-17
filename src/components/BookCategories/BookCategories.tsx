@@ -3,11 +3,12 @@ import BookCategory from "components/BookCategories/BookCategory/BookCategory";
 type PropsType = {
   categories?: Array<string>;
   isLowerCase?: boolean;
+  propsCategoriesContainer?: string;
 };
 
-const BookCategories = ({ categories, isLowerCase }: PropsType) => {
+const BookCategories = ({ categories, isLowerCase, propsCategoriesContainer }: PropsType) => {
   return (
-    <div>
+    <div className={propsCategoriesContainer}>
       {categories?.map((c) => (
         <BookCategory category={c} key={c} isLowerCase={isLowerCase} />
       ))}

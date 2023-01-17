@@ -20,8 +20,6 @@ const LazyLoadingImg: React.FC<PropsType> = ({
 
   const noData = noDataImg ?? noImage;
 
-  console.log(noData);
-
   if (error || (!thumbnail && !smallThumbnail)) {
     return <img {...props} src={noData} className={props.className} alt="" />;
   } else {
