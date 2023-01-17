@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/book-search/static/css/main.f9a8e30e.css",
-    "main.js": "/book-search/static/js/main.5cb4f3e2.js",
+    "main.css": "/book-search/static/css/main.e38483cb.css",
+    "main.js": "/book-search/static/js/main.536d2d28.js",
     "static/media/headerBackground.png": "/book-search/static/media/headerBackground.e27119a82de9de5c9540.png",
     "static/media/Roboto-Regular.ttf": "/book-search/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/Roboto-Bold.ttf": "/book-search/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
     "static/media/noImage.jpg": "/book-search/static/media/noImage.f6677738a4637530a33f.jpg",
     "index.html": "/book-search/index.html",
     "static/media/goBackArrow.svg": "/book-search/static/media/goBackArrow.f9b869d2971357aa63f5420bb28c8dd9.svg",
-    "main.f9a8e30e.css.map": "/book-search/static/css/main.f9a8e30e.css.map",
-    "main.5cb4f3e2.js.map": "/book-search/static/js/main.5cb4f3e2.js.map"
+    "main.e38483cb.css.map": "/book-search/static/css/main.e38483cb.css.map",
+    "main.536d2d28.js.map": "/book-search/static/js/main.536d2d28.js.map"
   },
   "entrypoints": [
-    "static/css/main.f9a8e30e.css",
-    "static/js/main.5cb4f3e2.js"
+    "static/css/main.e38483cb.css",
+    "static/js/main.536d2d28.js"
   ]
 }
