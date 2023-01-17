@@ -21,13 +21,15 @@ const BookCardsLayout = ({ propsClassName }: PropsType) => {
           <BookCard book={b} key={i} />
         ))}
       </div>
-      <Button
-        onClick={() => {
-          dispatch(showMore());
-        }}
-      >
-        Показать ещё
-      </Button>
+      {books && books.length > 1 && (
+        <Button
+          onClick={() => {
+            dispatch(showMore());
+          }}
+        >
+          Показать ещё
+        </Button>
+      )}
     </>
   );
 };

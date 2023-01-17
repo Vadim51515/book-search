@@ -1,5 +1,6 @@
 import BookAuthors from "components/BookAuthors/BookAuthors";
 import BookCategories from "components/BookCategories/BookCategories";
+import LazyLoadingImg from "components/LazyLoadingImg/LazyLoadingImg";
 import { useNavigate } from "react-router-dom";
 import styles from "./BookCard.module.scss";
 type PropsType = {
@@ -17,13 +18,9 @@ const BookCard = ({ book }: PropsType) => {
       }}
     >
       <div className={styles.imgContainer}>
-        <img
-          className={styles.imgContainer__img}
-          src={
-            book.volumeInfo.imageLinks?.thumbnail ??
-            book.volumeInfo.imageLinks?.smallThumbnail
-          }
-          alt=""
+        <LazyLoadingImg
+          thumbnail={book.volumeInfo.imageLinks?.thumbnail}
+          smallThumbnail={book.volumeInfo.imageLinks?.smallThumbnail}
         />
       </div>
       <div>
