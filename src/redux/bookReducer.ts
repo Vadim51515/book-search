@@ -12,7 +12,7 @@ let initialState = {
     value: "relevance",
     label: "Актуальное",
   } as SelectOptionType,
-  titleBook: "js" as string,
+  titleBook: "" as string,
   isLoadingHomePage: false as boolean,
   startIndex: 0 as number,
   maxResults: 30,
@@ -130,8 +130,6 @@ export const requestGetBooks = (startIndex: number) => async () => {
 
 export const getBooks = (): ThunkType => async (dispatch) => {
   dispatch(actions.setIsLoadingHomePage(true));
-  const state = store.getState().bookReducer;
-
   const response = dispatch(requestGetBooks(0));
   response.then((res) => {
     if (res && "data" in res) {
