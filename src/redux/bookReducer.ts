@@ -131,12 +131,14 @@ export const requestGetBooks = (startIndex: number) => async () => {
 export const getBooks = (): ThunkType => async (dispatch) => {
   const state = store.getState().bookReducer;
   if (state.titleBook.trim() === "") {
-    toast.error(`Поле "Название книги" должно быть не пустым`);
+    toast.error(`Поле "Название книги" не должно быть пустым`);
   } else {
     dispatch(actions.setIsLoadingHomePage(true));
     const response = dispatch(requestGetBooks(0));
     response.then((res) => {
-      if (res && "data" in res) {
+      console.log("res", res);
+
+      if (res && "items" in res.data) {
         dispatch(actions.setBooks(res.data.items));
       } else {
         dispatch(actions.setIsLoadingHomePage(false));
