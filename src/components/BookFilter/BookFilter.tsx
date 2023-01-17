@@ -10,7 +10,6 @@ import {
 import Input from "ui/Input/Input";
 import { useDispatch, useSelector } from "redux/store";
 import Button from "ui/Button/Button";
-import { useEffect } from "react";
 const BookFilter = () => {
   const dispatch = useDispatch();
 
