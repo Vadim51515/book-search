@@ -7,15 +7,16 @@
   justify-content: center;
   padding: var(--little_padding);
 
-  @media (min-width: 900px) {
-    padding: calc(var(--big_padding) * 2);
+  @media (min-width: 420px) {
+    padding: var(--padding);
   }
 
   @media (min-width: 700px) {
     padding: var(--big_padding);
   }
-  @media (min-width: 420px) {
-    padding: var(--padding);
+  
+  @media (min-width: 900px) {
+    padding: calc(var(--big_padding) * 2);
   }
 }
 
