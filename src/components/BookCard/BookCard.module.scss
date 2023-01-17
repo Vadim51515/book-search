@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--padding);
+
+  background-color: var(--background_card_color);
+  border-radius: var( --border_radius);
+
+  cursor: pointer;
+}
+
+.imgContainer {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 16px;
+}
