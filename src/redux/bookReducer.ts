@@ -1,6 +1,7 @@
 import { getBook as getBookApi, getBooks as getBooksApi } from "api";
 import { BaseThunkType, InferActionsTypes } from "./store";
 import store from "redux/store";
+import { toast } from "react-toastify";
 let initialState = {
   books: [] as Array<BookType>,
   book: undefined as BookType | undefined,
@@ -129,15 +130,20 @@ export const requestGetBooks = (startIndex: number) => async () => {
 };
 
 export const getBooks = (): ThunkType => async (dispatch) => {
-  dispatch(actions.setIsLoadingHomePage(true));
-  const response = dispatch(requestGetBooks(0));
-  response.then((res) => {
-    if (res && "data" in res) {
-      dispatch(actions.setBooks(res.data.items));
-    } else {
-      dispatch(actions.setIsLoadingHomePage(false));
-    }
-  });
+  const state = store.getState().bookReducer;
+  if (state.titleBook.trim() === "") {
+    toast.error(`Поле "Название книги" должно быть не пустым`);
+  } else {
+    dispatch(actions.setIsLoadingHomePage(true));
+    const response = dispatch(requestGetBooks(0));
+    response.then((res) => {
+      if (res && "data" in res) {
+        dispatch(actions.setBooks(res.data.items));
+      } else {
+        dispatch(actions.setIsLoadingHomePage(false));
+      }
+    });
+  }
 };
 
 export const showMore = (): ThunkType => async (dispatch) => {
