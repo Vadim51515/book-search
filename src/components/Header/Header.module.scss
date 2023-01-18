@@ -3,11 +3,11 @@
   height: 200px;
   background: url("../../assets/img/headerBackground.png");
 
-  @media (min-width: 900px) {
-  height: 400px;
-  }
-
   @media (min-width: 425px) {
     height: 300px;
-    }
+  }
+
+  @media (min-width: 900px) {
+    height: 400px;
+  }
 }
