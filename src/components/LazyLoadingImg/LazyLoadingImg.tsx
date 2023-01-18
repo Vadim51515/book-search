@@ -2,17 +2,16 @@ import classNames from "classnames";
 import React, { useState } from "react";
 import styles from "./LazyLoadingImg.module.scss";
 import noImage from "assets/img/noImage.jpg";
+import { getOptimalPicture } from "utils";
 
 type PropsType = Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src"> & {
-  smallThumbnail?: string;
-  thumbnail?: string;
+  imageLinks?: ImageLinksType;
   noDataImg?: string;
 };
 
 const LazyLoadingImg: React.FC<PropsType> = ({
   noDataImg,
-  thumbnail,
-  smallThumbnail,
+  imageLinks,
   ...props
 }) => {
   const [loaded, setLoaded] = useState(false);
@@ -20,14 +19,16 @@ const LazyLoadingImg: React.FC<PropsType> = ({
 
   const noData = noDataImg ?? noImage;
 
-  if (error || (!thumbnail && !smallThumbnail)) {
+  console.log("123", );
+
+  if (error || (!imageLinks)) {
     return <img {...props} src={noData} className={props.className} alt="" />;
   } else {
     return (
       <>
         <img
           {...props}
-          src={smallThumbnail}
+          src={getOptimalPicture("min", imageLinks)}
           className={classNames(
             { [styles.displayNone]: loaded },
             props.className
@@ -37,7 +38,7 @@ const LazyLoadingImg: React.FC<PropsType> = ({
         />
         <img
           {...props}
-          src={thumbnail}
+          src={getOptimalPicture("max", imageLinks)}
           className={classNames(
             { [styles.displayNone]: !loaded },
             props.className

@@ -1,7 +1,4 @@
-
 export type CategoriesType = typeof bookCategoriesData;
-
-
 export const bookCategoriesData = [
   {
     value: "all",
@@ -31,7 +28,7 @@ export const bookCategoriesData = [
     value: "poetry",
     label: "Поэзия",
   },
-]
+];
 
 export const sortByData = [
   {
@@ -43,3 +40,12 @@ export const sortByData = [
     label: "Новинки",
   },
 ];
+
+export const availableImageKeys = [
+  "extraLarge",
+  "large",
+  "medium",
+  "small",
+  "smallThumbnail",
+  "thumbnail",
+] as const;

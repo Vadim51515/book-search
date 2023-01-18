@@ -7,19 +7,21 @@ type BookType = {
   id: string;
   volumeInfo: {
     title: string;
-    imageLinks?: {
-      extraLarge?: string;
-      large?: string;
-      medium?: string;
-      small?: string;
-      smallThumbnail?: string;
-      thumbnail?: string;
-    };
+    imageLinks?: ImageLinksType
     categories?: Array<string>;
     authors?: Array<string>;
     description?: string;
   };
 };
+
+type ImageLinksType = {
+  extraLarge?: string;
+  large?: string;
+  medium?: string;
+  small?: string;
+  smallThumbnail?: string;
+  thumbnail?: string;
+}
 
 type GetBooksParams = {
   titleBook: string;

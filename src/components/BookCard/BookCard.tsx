@@ -9,7 +9,6 @@ type PropsType = {
 
 const BookCard = ({ book }: PropsType) => {
   const navigate = useNavigate();
-
   return (
     <div
       className={styles.container}
@@ -19,12 +18,15 @@ const BookCard = ({ book }: PropsType) => {
     >
       <div className={styles.imgContainer}>
         <LazyLoadingImg
-          thumbnail={book.volumeInfo.imageLinks?.thumbnail}
-          smallThumbnail={book.volumeInfo.imageLinks?.smallThumbnail}
+          imageLinks={book.volumeInfo.imageLinks}
         />
       </div>
       <div>
-        <BookCategories propsCategoriesContainer={styles.categoriesContainer} isLowerCase categories={book.volumeInfo.categories} />
+        <BookCategories
+          propsCategoriesContainer={styles.categoriesContainer}
+          isLowerCase
+          categories={book.volumeInfo.categories}
+        />
         <h4 className={styles.bookTitle}>{book.volumeInfo.title}</h4>
         <BookAuthors authors={book.volumeInfo.authors} />
       </div>

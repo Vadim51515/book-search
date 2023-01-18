@@ -25,7 +25,7 @@ const BookPage = () => {
     return () => {
       dispatch(clearBook());
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!book) return <LoadingPage />;
@@ -38,14 +38,14 @@ const BookPage = () => {
       />
       <div className={styles.contentContainer}>
         <div className={styles.imgContainer}>
-          <LazyLoadingImg
-            thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
-            smallThumbnail={book?.volumeInfo?.imageLinks?.smallThumbnail}
-          />
+          <LazyLoadingImg imageLinks={book.volumeInfo.imageLinks} />
         </div>
 
         <div className={styles.infoContainer}>
-          <BookCategories categories={book?.volumeInfo.categories} />
+          <BookCategories
+            categories={book?.volumeInfo.categories}
+            propsCategoriesContainer={styles.categories}
+          />
           <h1 className={styles.titleBook}>{book?.volumeInfo.title}</h1>
           <BookAuthors authors={book?.volumeInfo.authors} />
           <Hr propsClassName={styles.hr} />
