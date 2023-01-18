@@ -111,7 +111,6 @@ export const actions = {
       type: "App-reducer/SET_BOOK",
       book: book,
     } as const),
-
 };
 
 // For home page
@@ -191,7 +190,7 @@ export const getBook =
   };
 
 export const clearBook = (): ThunkType => async (dispatch) => {
-  dispatch(actions.setBook())
+  dispatch(actions.setBook());
 };
 
 export default bookReducer;

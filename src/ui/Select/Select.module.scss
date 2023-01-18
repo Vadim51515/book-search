@@ -21,44 +21,29 @@
   margin-left: 8px;
 }
 
-.placeholder {
-  color: var(--color_placeholder);
-}
-
-.currentValue {
-  width: 100%;
-  padding: var(--little_padding);
-  position: relative;
-
-  // background: var(--color_background);
-  border: var(--border);
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: left;
-}
 
 .showOptions {
   border-color: var(--primary_color);
 }
 
-.valueError {
-  border-color: var(--color_danger) !important;
-}
-
 .arrow {
-  height: 100%;
-  display: flex;
-  align-items: center;
   position: absolute;
   top: 0;
   right: 8px;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
   user-select: none;
   & > img {
     height: 60%;
+
     transition: transform 0.2s linear;
-    cursor: pointer;
     transform: rotate(0deg);
+
+    cursor: pointer;
   }
 }
 
@@ -66,22 +51,15 @@
   transform: rotate(-180deg);
 }
 
-.error {
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  transform: translateY(100%);
-
-  font-size: 14px;
-  color: var(--color_danger);
-}
 
 .options {
-  width: 140px;
-  display: none;
   position: absolute;
-  bottom: -5px;
   transform: translateY(100%);
+  bottom: -5px;
+
+  display: none;
+
+  width: 140px;
 
   border: var(--border);
   border-radius: var( --border_radius);
@@ -111,18 +89,17 @@
   padding: var(--little_padding);
 
   outline: none;
-  // background: var(--color_background);
   border: none;
   border-bottom: var(--border);
+
+  text-align: left;
+  background-color: white;
 
   font-size: 16px;
   color: var(--color_text);
   cursor: pointer;
-  text-align: left;
-  background-color: white;
 
   &:hover {
-    // color: var(--primary_color);
     background-color: rgb(228, 228, 228);
   }
 }

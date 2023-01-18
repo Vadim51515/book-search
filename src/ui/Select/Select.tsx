@@ -2,9 +2,8 @@ import classNames from "classnames";
 import { useState } from "react";
 import styles from "./Select.module.scss";
 import arrowForSelect from "assets/img/arrowForSelect.png";
-import { useSelector } from "../../redux/store";
 import TitleForUiComponents from "ui/TitleForUiComponents/TitleForUiComponents";
-import { useClickOutside } from 'hooks/useClickOutside'
+import { useClickOutside } from "hooks/useClickOutside";
 
 type PropsType = {
   options: Array<SelectOptionType>;
@@ -16,11 +15,10 @@ type PropsType = {
 const Select = ({ options, onChange, title, selectedOption }: PropsType) => {
   const [showOptions, setShowOptions] = useState(false);
   const hasOptions = options.length > 0;
-  const ref = useClickOutside(() => setShowOptions(false))
-
+  const ref = useClickOutside(() => setShowOptions(false));
 
   return (
-    <div className={styles.selectContainer}  ref={ref}>
+    <div className={styles.selectContainer} ref={ref}>
       <TitleForUiComponents title={title} />
       <div
         className={classNames([styles.select])}
