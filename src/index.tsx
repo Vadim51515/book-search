@@ -16,7 +16,11 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       {/* Необходимо для деплоя */}
-      <BrowserRouter basename={process.env.NODE_ENV === 'production' ?  process.env.PUBLIC_URL : ''}>
+      <BrowserRouter
+        basename={
+          process.env.NODE_ENV === "production" ? process.env.PUBLIC_URL : ""
+        }
+      >
         <ToastContainer />
         <App />
       </BrowserRouter>
