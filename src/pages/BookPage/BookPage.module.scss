@@ -9,10 +9,11 @@
 
   background-color: var(--background_card_color);
   border-radius: var(--border_radius);
+  height: 350px;
 
   > img {
     width: 100%;
-    max-height: 350px;
+    height: 100%;
     object-fit: contain;
   }
 }
@@ -43,9 +44,7 @@
 
 @media (min-width: 700px) {
   .imgContainer {
-    > img {
-      max-height: 500px;
-    }
+    height: 500px;
   }
 }
 
@@ -57,10 +56,6 @@
   }
 
   .imgContainer {
-    > img {
-      max-height: 700px;
-    }
+    height: 700px;
   }
 }
-
-
