@@ -50,9 +50,11 @@ const BookPage = () => {
           <BookAuthors authors={book?.volumeInfo.authors} />
           <Hr propsClassName={styles.hr} />
           <h2 className={styles.descriptionTitle}>Описание</h2>
-          <h4 className={styles.descriptionText}>
-            {book?.volumeInfo.description ?? "Описание отсутвует :("}
-          </h4>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: book?.volumeInfo.description ?? "",
+            }}
+          ></div>
         </div>
       </div>
     </Layout>
