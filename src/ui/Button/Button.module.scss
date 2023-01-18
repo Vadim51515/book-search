@@ -13,6 +13,9 @@
   &:active {
     opacity: 0.7;
   }
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .default {

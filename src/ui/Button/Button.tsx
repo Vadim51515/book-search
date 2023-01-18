@@ -4,8 +4,9 @@ type PropsType = {
   children: string;
   type?: "primary" | "default";
   onClick: () => void;
+  disabled?: boolean;
 };
-const Button = ({ children, type = "default", onClick }: PropsType) => {
+const Button = ({ children, type = "default", onClick, disabled }: PropsType) => {
   return (
     <button
       onClick={onClick}
@@ -14,6 +15,7 @@ const Button = ({ children, type = "default", onClick }: PropsType) => {
         { [styles.default]: type === "default" },
         { [styles.primary]: type === "primary" }
       )}
+      disabled={disabled}
     >
       {children}
     </button>

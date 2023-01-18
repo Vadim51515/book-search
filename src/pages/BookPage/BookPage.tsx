@@ -52,7 +52,7 @@ const BookPage = () => {
           <h2 className={styles.descriptionTitle}>Описание</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: book?.volumeInfo.description ?? "",
+              __html: book?.volumeInfo.description ?? "Описание отсутствует :(",
             }}
           ></div>
         </div>
