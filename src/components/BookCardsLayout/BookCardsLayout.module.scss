@@ -5,12 +5,12 @@
   grid-template-columns: 1fr;
   gap: 16px;
 
-  @media (min-width: 420px) {
+  @media (min-width: 550px) {
     grid-template-columns: 1fr 1fr;
     gap: var(--little_padding);
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 1000px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: var(--padding);
   }

@@ -37,6 +37,7 @@ body {
   /* Colors */
   --primary_color: #0277bd;
   --border_color: #c2c4c6;
+  --default_background: #fff;
   --background_card_color: #f7f7f7;
   --shade_text_color: #69737b;
   --color_for_primary_background: #f8f9f9;
